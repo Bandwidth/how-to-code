@@ -12,26 +12,23 @@ var client = new Bandwidth({
 	apiSecret: secret
 });
 
-// Promise
-client.Application.update('a-j4f2j6vjh45wsrhzmqz53mq', {
-	name: 'Rename App1',
-	autoAnswer: false
-})
-.then(function (response) {
-	console.log(response);
+//Promise
+client.AvailableNumber.searchAndOrder("local", {
+	areaCode : "910",
+	quantity : 1 })
+.then(function (numbers) {
+	console.log(numbers)
 });
 
 // Callback
-client.Application.update('a-zuwwctyxth6ju4dcfzzrbea',
-	{
-		name: 'Rename App2',
-		autoAnswer: false
-	},
-	function (err, response) {
-		if (err) {
+client.AvailableNumber.searchAndOrder("local", {
+	areaCode : "910",
+	quantity : 1 },
+	function (err, numbers) {
+		if(err) {
 			console.log(err);
 		}
 		else {
-			console.log(response);
+			console.log(numbers);
 		}
-});
+	});

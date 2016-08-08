@@ -13,20 +13,13 @@ var client = new Bandwidth({
 });
 
 // Promise
-client.Application.update('a-j4f2j6vjh45wsrhzmqz53mq', {
-	name: 'Rename App1',
-	autoAnswer: false
-})
+client.Application.delete('a-j4f2j6vjh45wsrhzmqz53mq')
 .then(function (response) {
 	console.log(response);
 });
 
 // Callback
-client.Application.update('a-zuwwctyxth6ju4dcfzzrbea',
-	{
-		name: 'Rename App2',
-		autoAnswer: false
-	},
+client.Application.delete('a-zuwwctyxth6ju4dcfzzrbea',
 	function (err, response) {
 		if (err) {
 			console.log(err);

@@ -12,26 +12,22 @@ var client = new Bandwidth({
 	apiSecret: secret
 });
 
-// Promise
-client.Application.update('a-j4f2j6vjh45wsrhzmqz53mq', {
-	name: 'Rename App1',
-	autoAnswer: false
+//Promise
+client.Bridge.update('brg-65dhjbanfdofnqwrmbasiei', {
+	bridgeAudio: false
 })
 .then(function (response) {
 	console.log(response);
 });
 
-// Callback
-client.Application.update('a-zuwwctyxth6ju4dcfzzrbea',
-	{
-		name: 'Rename App2',
-		autoAnswer: false
-	},
-	function (err, response) {
-		if (err) {
+//Callback
+client.Bridge.update('brg-65dhjbanfdofnqwrmbasiei', {
+	bridgeAudio: false
+}, function (err, response) {
+		if(err) {
 			console.log(err);
 		}
 		else {
 			console.log(response);
 		}
-});
+	});
