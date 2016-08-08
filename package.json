@@ -1,0 +1,31 @@
+{
+  "name": "code-snips",
+  "version": "0.0.1",
+  "description": "Code snips for documentation and sdks",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BandwidthExamples/code-snips.git"
+  },
+  "keywords": [
+    "bandwidth",
+    "node",
+    "javascript",
+    "csharp",
+    ".net",
+    "java",
+    "python",
+    "php"
+  ],
+  "author": "Dan Tolbert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BandwidthExamples/code-snips/issues"
+  },
+  "homepage": "https://github.com/BandwidthExamples/code-snips#readme",
+  "dependencies": {
+    "node-bandwidth": "^2.0.1"
+  }
+}
