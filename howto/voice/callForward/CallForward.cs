@@ -47,10 +47,9 @@ namespace WebApplication
 
       // GET demo/forward
       [HttpGet]
-      public IActionResult Forward([FromQuery] CallbackEvent eventData)
+      public IActionResult Forward([FromQuery] CallbackEvent eventData, [FromQuery] string phoneNumber)
       {
-        StringValues phoneNumber;
-        if (Request.Query.TryGetValue("phoneNumber", out phoneNumber))
+        if(!string.IsNullOrEmpty(phoneNumber))
         {
           switch (eventData.EventType)
           {
@@ -59,7 +58,7 @@ namespace WebApplication
               var bxmlResponse = new Response(new Transfer
               {
                 TransferCallerId = eventData.From,
-                PhoneNumbers = new[] {phoneNumber.FirstOrDefault()}
+                PhoneNumbers = new[] {phoneNumber}
               });
               return new ContentResult {Content = bxmlResponse.ToXml(), ContentType = "text/xml"};
           }
