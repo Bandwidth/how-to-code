@@ -1,6 +1,6 @@
 //NodeJS
 
-//Lets require/import the HTTP module, don't need anything fancy here
+//Demo uses express 4.x
 var express = require('express');
 var Bandwidth = require("node-bandwidth");
 
