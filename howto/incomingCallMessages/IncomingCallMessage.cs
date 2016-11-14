@@ -8,9 +8,9 @@ using Bandwidth.Net.Api;
 public class Program
 {
   //API credentials which can be found on your account page at https://catapult.inetwork.com/pages/login.jsf
-  private const string UserId = "u-userID"; //{user_id}
-  private const string Token = "t-token"; //{token}
-  private const string Secret = "secret"; //{secret}
+  private const string UserId = "{{userId}}"; //{user_id}
+  private const string Token = "{{apiToken}}"; //{token}
+  private const string Secret = "{{apiSecret}}"; //{secret}
 
   public static void Main()
   {

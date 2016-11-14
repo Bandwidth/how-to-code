@@ -8,9 +8,9 @@ using Bandwidth.Net.Api;
 public class Program
 {
   //API credentials which can be found on your account page at https://catapult.inetwork.com/pages/login.jsf
-  private const string UserId = "u-userID"; //{user_id}
-  private const string Token = "t-token"; //{token}
-  private const string Secret = "secret"; //{secret}
+  private const string UserId = "u-YOUR_USER_ID"; //{user_id}
+  private const string Token = "t-YOUR_API_TOKEN"; //{token}
+  private const string Secret = "YOUR_API_SECRET"; //{secret}
 
   public static void Main()
   {
@@ -35,5 +35,6 @@ public class Program
       To = "+15035555555",
       CallbackUrl = "http://requestb.in/10sze251"
     });
+    Console.WriteLine($"Call Id is {call.Id}");
   }
 }
