@@ -18,6 +18,9 @@ var client = new Bandwidth({
 	apiSecret : '{{apiSecret}}'
 });
 
+// Created application Id
+var applicationId = '{{a-xxxxx}}';
+
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,9 +28,25 @@ app.use(bodyParser.json());
 
 app.post('/incomingCall', function (req, res) {
 	var state = req.body.eventType;
-	// Only want to reply on an answer event.
+	var callId = req.body.callId;
+	
+	// Handle incoming call and answer it
+	// You can remove this handler if you set autoAnswer=true for your application on Catapult dashboard
+	if( state === 'incomingcall' ) {
+		client.Application.get(applicationId)
+			.then(function(app) {
+				if (!app.autoAnswer) {
+					// Answer from code only if autoAnswer === false only
+					return client.Call.answer(callId);
+				}
+			})
+			.then(function() {
+				console.log('Answered incoming call');
+			})
+	}
+
+	// Reply on an answer event.
 	if( state === 'answer' ) {
-		var callId = req.body.callId;
 		var incomingCallId = req.body.from;
 		// Some extra options
 		var transferPayload = {
