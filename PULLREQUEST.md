@@ -1,4 +1,4 @@
-#How to Submit a Pull Request
+# How to Submit a Pull Request
 
 * Search through Bandwidth's open and closed pull request to ensure you are not submitting something that has already been submitted.
 * Make all necessary changes in a new git branch:
