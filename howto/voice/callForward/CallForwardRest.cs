@@ -54,7 +54,7 @@ namespace WebApplication
 
       // POST demo/forward
       [HttpPost]
-      public async string Forward()
+      public async Task<string> Forward()
       {
         string json;
         var client = new Client(UserId, Token, Secret);
