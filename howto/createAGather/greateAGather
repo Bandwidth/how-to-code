@@ -1,0 +1,122 @@
+{% method %}
+
+# How to create a gather on a call
+
+### Gather digits on a phone call
+
+```http
+POST https:https://api.catapult.inetwork.com/v1/users/{userId}/calls/{callId}/gather HTTP/1.1
+Content-Type: application/json; charset=utf-8
+User-Agent: BandwidthAPI/v1
+{
+  "maxDigits":"5",
+  "terminatingDigits":"*",
+  "interDigitTimeout":"7",
+  "prompt": {
+    "sentence": "Please enter your 5 digit code"
+  }
+}
+```
+
+### Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+### Gather will return this information when fetched:
+
+* Full callbacks https://api.catapult.inetwork.com/v1/users/{userId}/calls/{callId}/gather/{gatherId}
+
+```http
+GET https://api.catapult.inetwork.com/v1/users/{userId}/calls/{callId}/gather/{gatherId}
+Content-Type: application/json; charset=utf-8
+{
+  "id": "{gatherId}",
+  "state": "completed",
+  "reason": "max-digits",
+  "createdTime": "2014-02-12T19:33:56Z",
+  "completedTime": "2014-02-12T19:33:59Z",
+  "call": "https://api.catapult.inetwork.com/v1/users/{userId}/calls/{callId}",
+  "digits": "123"
+}
+```
+
+{% sample lang="js" %}
+
+### Create Gather on Active [call](http://dev.bandwidth.com/ap-docs/methods/calls/postCallsCallIdGather.html)
+```js
+var options =     {
+    "maxDigits":"5",
+    "terminatingDigits":"*",
+    "interDigitTimeout":"7",
+    "prompt": {
+        "sentence": "Please enter your 5 digit code"
+    }
+};
+client.Call.createGather("callId", options).then(function(res) {});
+```
+
+### Fetch Gather Information on [call](http://dev.bandwidth.com/ap-docs/methods/calls/getCallsCallIdGatherGatherId.html)
+```js
+client.Call.getGather("{callId}", "{gatherId}").then(function (res) {console.log(res);});
+```
+
+{% sample lang="csharp" %}
+
+### Create Gather on Active [call](http://dev.bandwidth.com/ap-docs/methods/calls/postCallsCallIdGather.html)
+```csharp
+var gather = await client.Call.CreateGatherAsync("{callId1}", new CreateGatherData {
+    MaxDigits = "5",
+    TerminatingDigits = "*",
+    InterDigitTimeout = "7",
+    Prompt = new GatherPrompt {
+        Sentence = "Please enter your 5 digit code"
+    }
+});
+```
+
+### Fetch Gather Information on [call](http://dev.bandwidth.com/ap-docs/methods/calls/getCallsCallIdGatherGatherId.html)
+```csharp
+var gather = await client.Call.GetGatherAsync("{callId1}", "{gatherId1}");
+Console.WriteLine(gather.Digits);
+```
+
+{% sample lang="ruby" %}
+
+### Create Gather on Active [call](http://dev.bandwidth.com/ap-docs/methods/calls/postCallsCallIdGather.html)
+```ruby
+gather = call.create_gather({
+    :max_digits => "5",
+    :terminating_digits => "*",
+    :inter_digit_timeout => "7",
+    :prompt =>  {
+        :sentence => "Please enter your 5 digit code"
+    }
+})
+```
+
+### Fetch Gather Information on [call](http://dev.bandwidth.com/ap-docs/methods/calls/getCallsCallIdGatherGatherId.html)
+```ruby
+gather = call.get_gather("{gatherId1}")
+digits = gather[:digits]
+```
+
+{% sample lang="python" %}
+
+### Create Gather on Active [call](http://dev.bandwidth.com/ap-docs/methods/calls/postCallsCallIdGather.html)
+```python
+Client.create_call_gather('{callId1}', max_digits="7", inter_digit_timeout="7", terminating_digits="*", tag=None)
+```
+
+### Fetch Gather Information on [call](http://dev.bandwidth.com/ap-docs/methods/calls/getCallsCallIdGatherGatherId.html)
+```python
+Client.get_call_gather(call_id, gather_id)
+```
+
+{% endmethod %}
+
+
+
+
+
